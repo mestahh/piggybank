@@ -1,0 +1,15 @@
+<form class="form-group" (submit)="submit(f)" #f="ngForm">
+  <div class="row">
+    <div class="col-xs-6 col-md-6 col-lg-6 offset-3">
+      <div class="form-group">
+        <label for="username" class="col-form-label">Username</label>
+        <input type="username" name="username" id="username" class="form-control" required ngModel>
+      </div>
+      <div class="form-group">
+        <label for="confirmation" class="col-form-label">Confirmation code</label>
+        <input type="text" name="confirmation" id="confirmation" class="form-control" required ngModel>
+      </div>
+      <button type="submit" name="confirm-submit" id="confirm-submit" class="btn btn-primary" [disabled]="!f.valid">Confirm</button>
+    </div>
+  </div>
+</form>
