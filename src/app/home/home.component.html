@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-lg-6">
+    <h2>Hello {{ user.name }}</h2>
+    <hr>
+    <p class="balance">Your balance is: {{ user.money }} Ft</p>
+    <div class="row">
+      <div class="col-xs-12 col-md-12 col-lg-12">
+        <button class="btn btn-danger" (click)="add()">Add 50 Ft</button>
+        <button class="btn btn-primary" (click)="remove()" [disabled]="removeDisabled">Remove 50 Ft</button>
+        <button class="btn btn-success" (click)="save()">Save</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6 col-lg-6">
+    <h2>Current values:</h2>
+    <hr>
+    <ul>
+      <li *ngFor="let user of users">{{ user.name }}: {{ user.money}} Ft</li>
+    </ul>
+  </div>
+</div>
