@@ -11,9 +11,13 @@ import {FormsModule} from '@angular/forms';
 import { ConfirmComponent } from './users/confirm/confirm.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import {MessagingService} from './messaging/messaging.service';
+import { LoginComponent } from './users/login/login.component';
+import {AuthService} from './auth.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent},
+  { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'confirm', component: ConfirmComponent}
 ]
@@ -24,14 +28,15 @@ const appRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     ConfirmComponent,
-    MessagingComponent
+    MessagingComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [UsersService, MessagingService],
+  providers: [UsersService, MessagingService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

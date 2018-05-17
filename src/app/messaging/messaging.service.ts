@@ -14,7 +14,6 @@ export class MessagingService {
   }
 
   error(message: string) {
-    console.log(message);
     this.errorMessage.next(message);
   }
 }
