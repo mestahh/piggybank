@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UsersService} from '../users/users.service';
 import {User} from '../users/user.model';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -13,13 +14,22 @@ export class HomeComponent implements OnInit {
   user: User;
   removeDisabled = false;
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService, private authService: AuthService) {
 
   }
 
   ngOnInit() {
-    this.users = this.usersService.getUsers();
-    this.user = this.users[0];
+    const authenticatedUser = this.authService.getAuthenticatedUser();
+    this.usersService.getUsers().subscribe(
+      (users: User[]) => {
+        this.users = users;
+        for (const u of users) {
+          if (authenticatedUser.getUsername() === u.username) {
+            this.user = u;
+          }
+        }
+      }
+    );
   }
 
   save() {
@@ -27,15 +37,15 @@ export class HomeComponent implements OnInit {
   }
 
   add() {
-    this.user.money = this.user.money + 50;
-    if (this.user.money > 0) {
+    this.user.balance = this.user.balance + 50;
+    if (this.user.balance > 0) {
       this.removeDisabled = false;
     }
   }
 
   remove() {
-    this.user.money = this.user.money - 50;
-    if (this.user.money === 0) {
+    this.user.balance = this.user.balance - 50;
+    if (this.user.balance === 0) {
       this.removeDisabled = true;
     }
   }

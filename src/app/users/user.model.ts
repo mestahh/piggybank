@@ -1,4 +1,4 @@
 export class User {
-  money: number;
-  name: string;
+  balance: number;
+  username: string;
 }

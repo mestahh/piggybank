@@ -13,6 +13,7 @@ import { MessagingComponent } from './messaging/messaging.component';
 import {MessagingService} from './messaging/messaging.service';
 import { LoginComponent } from './users/login/login.component';
 import {AuthService} from './auth.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [UsersService, MessagingService, AuthService],
   bootstrap: [AppComponent]

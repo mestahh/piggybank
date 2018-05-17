@@ -97,7 +97,6 @@ export class AuthService {
           this.loggedIn.error(err.message);
         } else {
           if (session.isValid()) {
-            console.log('itt vagyooook');
             this.loggedIn.next(true);
           } else {
             this.loggedIn.error('Sorry, your session expired. Log in again.');
